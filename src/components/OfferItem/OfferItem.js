@@ -1,9 +1,10 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import OfferItemStyled from './OfferItemStyles';
 
 const OfferItem = (props) => {
   const { offer } = props;
 
-  return (<Fragment>
+  return (<OfferItemStyled>
         <div className="order">
           1
         </div>
@@ -55,7 +56,7 @@ const OfferItem = (props) => {
             <a className="button" href={offer.signup.responsive.url}><span>To tarif</span> &#x2192;</a>
           }
         </div>
-    </Fragment>);
+    </OfferItemStyled>);
 };
 
 export default OfferItem;

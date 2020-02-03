@@ -1,16 +1,15 @@
 import React from 'react';
 import { OfferItem } from '../OfferItem';
+import OfferListStyled from './OfferListStyles';
 
 const OfferList = props => {
   console.log(props.offers);
   return (
-    <ol>
+    <OfferListStyled>
       {props.offers && props.offers.map((offer, index) => (
-        <li key={index}>
-          <OfferItem offer={offer} />
-        </li>
+        <OfferItem offer={offer} />
       ))}
-    </ol>
+    </OfferListStyled>
   );
 }
 
