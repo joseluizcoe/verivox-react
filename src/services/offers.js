@@ -12,7 +12,7 @@ const allOffers = offers.offers.map(
       uploadSpeed: Number(offer.contractTerm.uploadSpeed.amount),
       uploadSpeedUnit: String(offer.contractTerm.uploadSpeed.unit),
       remarks: offer.remarks,
-      price: Number(offer.cost.amount),
+      price: Number(offer.cost.effectiveCost.amount),
       priceText: String(offer.cost.effectiveCost.content.text),
       hasSignupPage: Boolean(offer.signup.responsive),
       signupPageUrl: offer.signup.responsive && String(offer.signup.responsive.url)
