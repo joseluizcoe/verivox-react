@@ -11,10 +11,13 @@ const OfferItemStyled = styled.li`
 
   .tarif-name {
     padding: 10px;
-    width: 50%;
+    width: 40%;
     text-align: center;
     .logo-area {
       display: block;
+      img {
+        width: 40%;
+      }
     }
   }
 
@@ -37,6 +40,7 @@ const OfferItemStyled = styled.li`
     .upload {
       display: flex;
       flex-wrap: wrap;
+      line-height: 1em;
 
       .arrow,
       .speed,
@@ -65,15 +69,16 @@ const OfferItemStyled = styled.li`
   .price {
     padding: 10px;
     display: flex;
-    width: 45%;
+    width: 50%;
     justify-content: space-between;
 
     .value {
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       display: block;
-      width: 70%;
+      width: 90%;
       text-align: right;
+      margin-right: 5px;
     }
   }
 
@@ -92,6 +97,7 @@ const OfferItemStyled = styled.li`
         justify-content: space-between;
 
         .value {
+          font-size: 24px;
           text-align: right;
           width: auto;
           padding: 10px 0;
