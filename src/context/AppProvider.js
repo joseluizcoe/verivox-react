@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import offers from './services/offers';
-import AppContext from './context';
+import offers from '../services/offers';
+import AppContext from './';
 
-class App extends Component {
+class AppProvider extends Component {
   state = {
     loading: true,
     offers: [],
@@ -71,10 +71,10 @@ class App extends Component {
 
     return (
       <AppContext.Provider value={context}>
-        {this.props.children}
+        {loading ? 'Loading...' : this.props.children}
       </AppContext.Provider>
     );
   }
 }
 
-export default App;
+export default AppProvider;

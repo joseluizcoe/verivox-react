@@ -1,3 +1,3 @@
 import OfferList from './OfferList';
 
-export { OfferList };
+export default OfferList;

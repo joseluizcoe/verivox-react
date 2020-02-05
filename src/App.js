@@ -1,23 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import AppProvider from './context/AppProvider';
+import OfferList from './components/OfferList';
 
-class App extends Component {
-  render() {
-
-    return (
-      <AppProvider>
-        <div className='App'>
-          {loading ? (
-            'Loading'
-          ) : (
-            <>
-              <OfferList />
-            </>
-          )}
-        </div>
-      </AppProvider>
-    );
-  }
-}
+const App = (props) => (
+  <AppProvider>
+    <OfferList />
+  </AppProvider>
+);
 
 export default App;
