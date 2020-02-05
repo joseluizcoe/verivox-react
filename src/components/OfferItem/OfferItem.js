@@ -1,15 +1,19 @@
 import React from 'react';
 import OfferItemStyled from './OfferItemStyles';
+import { Button } from '../Button';
 
 const OfferItem = (props) => {
   const { offer } = props;
 
   return (<OfferItemStyled>
         <div className="order">
-          1
+          {offer.rank}
         </div>
         <div className="tarif-name">
-          {offer.product.content.text}
+          <span className="logo-area">
+            <img src={offer.provider.logoUrl} alt={offer.provider.content.text} />
+          </span>
+          <span>{offer.product.content.text}</span>
         </div>
         <div className="network-speed">
           <div className="download">
@@ -53,7 +57,7 @@ const OfferItem = (props) => {
           <strong className="value">{offer.cost.effectiveCost.content.text}</strong>
           {
             offer.signup.responsive &&
-            <a className="button" href={offer.signup.responsive.url}><span>To tarif</span> &#x2192;</a>
+            <Button href={offer.signup.responsive.url}><span>To tarif</span> &#x2192;</Button>
           }
         </div>
     </OfferItemStyled>);

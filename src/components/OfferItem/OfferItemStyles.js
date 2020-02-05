@@ -10,9 +10,12 @@ const OfferItemStyled = styled.li`
   }
 
   .tarif-name {
-    display: flex;
     padding: 10px;
     width: 50%;
+    text-align: center;
+    .logo-area {
+      display: block;
+    }
   }
 
   .network-speed {
@@ -66,39 +69,11 @@ const OfferItemStyled = styled.li`
     justify-content: space-between;
 
     .value {
-      font-size: 1.2em;
+      font-size: 24px;
       font-weight: bold;
       display: block;
       width: 70%;
       text-align: right;
-    }
-
-    .button {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      margin: 0;
-      padding: 10px;
-      border: 0 solid #db720c;
-      border-bottom-width: 2px;
-      border-radius: 3px;
-      cursor: pointer;
-      background: #fd8a02;
-      transition: background-color 0.2s ease 0s,
-        border-color 0.2s ease 0s;
-      font-size: 13px;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-
-      &:hover {
-        background-color: #db720c;
-        border-color: #fd8a02;
-      }
-
-      span {
-        display: none;
-      }
     }
   }
 
@@ -121,17 +96,6 @@ const OfferItemStyled = styled.li`
           width: auto;
           padding: 10px 0;
         }
-
-
-        .button {
-          display: inline-block;
-          text-align: center;
-
-          span {
-            display: inline-block;
-            margin-right: 5px;
-          }
-        }
       } /* price */
 
 
@@ -141,7 +105,7 @@ const OfferItemStyled = styled.li`
   @media (min-width: 940px) {
 
       .tarif-name {
-        width: 30%;
+        width: 20%;
       }
 
       .network-speed {
@@ -161,20 +125,24 @@ const OfferItemStyled = styled.li`
 
       .product-benefits {
         padding: 10px 0;
-        width: 30%;
+        width: 40%;
         line-height: 2em;
         display: inline-block;
 
         ul {
-          padding: 0;
           margin : 0 0 0 20px;
           list-style: none;
+          li {
+            svg {
+              margin-right : 5px;
+            }
+          }
         }
       }
 
       .price {
         .value {
-          font-size: 30px;
+          font-size: 24px;
         }
       }
 
