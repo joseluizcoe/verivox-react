@@ -3,22 +3,19 @@ import * as offers from './offers.json';
 const allOffers = offers.offers.map(
   offer => {
     return {
-      rank: offer.rank,
-      providerLogoUrl: offer.provider.logoUrl,
-      providerDescription: offer.provider.content.text,
-      productTitle: offer.product.content.text,
-      downloadSpeed:
-      offer.contractTerm.downloadSpeed.amount,
-      downloadSpeedUnit:
-      offer.contractTerm.downloadSpeed.unit,
-      uploadSpeed: offer.contractTerm.uploadSpeed.amount,
-      uploadSpeedUnit: offer.contractTerm.uploadSpeed.unit,
+      rank: Number(offer.rank),
+      providerLogoUrl: String(offer.provider.logoUrl),
+      providerDescription: String(offer.provider.content.text),
+      productTitle: String(offer.product.content.text),
+      downloadSpeed: Number(offer.contractTerm.downloadSpeed.amount),
+      downloadSpeedUnit: String(offer.contractTerm.downloadSpeed.unit),
+      uploadSpeed: Number(offer.contractTerm.uploadSpeed.amount),
+      uploadSpeedUnit: String(offer.contractTerm.uploadSpeed.unit),
       remarks: offer.remarks,
-      price: offer.cost.amount,
-      priceText: offer.cost.effectiveCost.content.text,
-      hasSignupPage: offer.signup.responsive,
-      signupPageUrl:
-      offer.signup.responsive ? offer.signup.responsive.url : null
+      price: Number(offer.cost.amount),
+      priceText: String(offer.cost.effectiveCost.content.text),
+      hasSignupPage: Boolean(offer.signup.responsive),
+      signupPageUrl: offer.signup.responsive && String(offer.signup.responsive.url)
     };
   }
 );
