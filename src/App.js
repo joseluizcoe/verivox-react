@@ -4,69 +4,77 @@ import offers from './services/offers';
 
 class App extends Component {
   state = {
-    offers: offers,
+    loading: true,
+    offers: [],
+    sortedOffers: [],
     sort: {
-      pric: 'asc',
-      title: 'asc',
-      downloadSpeed: 'asc'
+      offers: [],
+      field: 'rank',
+      type: Number,
+      order: 'asc'
     }
   };
 
-  priceSort = (a, b) => {
-    let valueA = a.cost.effectiveCost.amount;
-    let valueB = b.cost.effectiveCost.amount;
+  componentDidMount() {
+    let newState = {
+      offers,
+      sortedOffers: offers,
+      loading: false
+    };
 
-    return valueA < valueB ? 1 : -1;
-  };
+    this.setState(newState);
+  }
 
-  titleSort = (a, b) => {
-    let valueA = a.product.content.text;
-    let valueB = b.product.content.text;
+  genericSort = (a, b) => {
+    let valueA = a[this.state.sort.field];
+    let valueB = b[this.state.sort.field];
 
-    return valueA < valueB ? 1 : -1;
-  };
+    valueA = this.state.sort.type(valueA);
+    valueB = this.state.sort.type(valueB);
 
-  downloadSpeedSort = (a, b) => {
-    let valueA = a.contractTerm.downloadSpeed.amount;
-    let valueB = b.contractTerm.downloadSpeed.amount;
     let result = {
-      asc: valueA < valueB ? 1 : -1,
+      asc: valueA > valueB ? 1 : -1,
       desc: valueA < valueB ? 1 : -1
     };
-    return result[this.state.sort.downloadSpeed];
+
+    return result[this.state.sort.order];
   };
 
-  changeOrder = callback => {
-    const { offers } = this.state;
-    const sortedOffers = offers.sort(callback);
-    this.setState({ offers: sortedOffers });
+  changeOrder = async sortFunction => {
+    let offersCopy = await Object.assign([], offers);
+    let sortedOffers = await offersCopy.sort(sortFunction);
+    this.setState({ sortedOffers });
   };
 
-  handlePriceOrder = () => {
-    this.changeOrder(this.priceSort);
-  };
-
-  handleTitleOrder = () => {
-    this.changeOrder(this.titleSort);
-  };
-
+  
   handleDownloadSpeed = () => {
-    this.changeOrder(this.downloadSpeedSort);
+    let newState = {
+      sort: {
+        type: Number,
+        field: 'downloadSpeed',
+        order: 'asc'
+      }
+    };
+    this.setState(newState);
+
+    this.changeOrder(this.genericSort);
   };
 
   render() {
+    const { loading } = this.state;
+
     return (
       <div className='App'>
-        <button onClick={this.handlePriceOrder}>
-          Price
-        </button>
-        <button onClick={this.handleTitleOrder}>
-          Title
-        </button>
-        <button onClick={this.handleDownloadSpeed}>
-          Download
-        </button>
-        <OfferList offers={this.state.offers} />
+        {loading ? (
+          'Loading'
+        ) : (
+          <>
+            <button onClick={this.handleDownloadSpeed}>
+              Download
+            </button>
+            <OfferList offers={this.state.sortedOffers} />
+          </>
+        )}
       </div>
     );
   }
