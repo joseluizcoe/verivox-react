@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import offers from '../services/offers';
+import getAllOffers from '../services/offers';
 import AppContext from './';
 
 class AppProvider extends Component {
@@ -14,7 +14,8 @@ class AppProvider extends Component {
     }
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    let offers = await getAllOffers();
     let newState = {
       offers,
       sortedOffers: offers,
@@ -37,7 +38,7 @@ class AppProvider extends Component {
   };
 
   changeOrder = async sortFunction => {
-    let offersCopy = await Object.assign([], offers);
+    let offersCopy = await Object.assign([], this.state.offers);
     let sortedOffers = await offersCopy.sort(sortFunction);
     this.setState({ sortedOffers });
   };
