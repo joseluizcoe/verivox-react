@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { OfferList } from './components/OfferList';
 import offers from './services/offers';
 import AppContext from './context';
 
@@ -72,15 +71,7 @@ class App extends Component {
 
     return (
       <AppContext.Provider value={context}>
-        <div className='App'>
-          {loading ? (
-            'Loading'
-          ) : (
-            <>
-              <OfferList />
-            </>
-          )}
-        </div>
+        {this.props.children}
       </AppContext.Provider>
     );
   }
