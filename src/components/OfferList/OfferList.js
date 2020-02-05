@@ -7,15 +7,22 @@ import AppContext from '../../context';
 
 const OfferList = () => (
   <AppContext.Consumer>
-    {context => (
+    {context => { 
+      const { sortedOffers } = context.state;
+      return (
       <OfferListStyled>
         <SortOfferBar />
-        {context.state.offers &&
-          context.state.offers.map((offer, index) => (
-            <OfferItem offer={offer} />
-          ))}
+        {
+          sortedOffers &&
+          sortedOffers.map(
+            (offer, index) => (
+              <OfferItem key={index} offer={offer} />
+            )
+          )
+        }
       </OfferListStyled>
-    )}
+    )
+    }}
   </AppContext.Consumer>
 );
 
