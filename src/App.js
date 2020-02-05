@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { OfferList } from './components/OfferList';
 import offers from './services/offers';
+import AppContext from './context';
 
 class App extends Component {
   state = {
@@ -62,17 +63,25 @@ class App extends Component {
 
   render() {
     const { loading } = this.state;
+    const context = {
+      state: this.state,
+      genericSort: this.genericSort,
+      changeOrder: this.changeOrder,
+      handleChange: this.handleChange,
+    }
 
     return (
-      <div className='App'>
-        { loading ? (
-          'Loading'
-        ) : (
-          <>
-            <OfferList offers={this.state.sortedOffers} />
-          </>
-        )}
-      </div>
+      <AppContext.Provider value={context}>
+        <div className='App'>
+          {loading ? (
+            'Loading'
+          ) : (
+            <>
+              <OfferList />
+            </>
+          )}
+        </div>
+      </AppContext.Provider>
     );
   }
 }
