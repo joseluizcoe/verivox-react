@@ -1,18 +1,11 @@
-import React, { Component } from 'react';
-import { OfferList } from './components/OfferList';
-import offers from './services/offers';
+import React from 'react';
+import AppProvider from './context/AppProvider';
+import OfferList from './components/OfferList';
 
-class App extends Component {
-  
-  state = { offers };
-
-  render () {
-    return (
-      <div className='App'>
-        <OfferList offers={this.state.offers} />
-      </div>
-    );
-  }
-}
+const App = (props) => (
+  <AppProvider>
+    <OfferList />
+  </AppProvider>
+);
 
 export default App;
