@@ -1,6 +1,6 @@
 import * as offers from './offers.json';
 
-const allOffers = offers.offers.map(
+const allOffers = offers.offers.slice(0,10).map(
   offer => {
     return {
       rank: Number(offer.rank),
@@ -19,6 +19,8 @@ const allOffers = offers.offers.map(
     };
   }
 );
+
+allOffers.totalResults = Number(offers.totalResults);
 
 
 export default allOffers;
