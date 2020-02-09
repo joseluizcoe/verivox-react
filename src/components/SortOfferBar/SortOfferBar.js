@@ -2,6 +2,37 @@ import React from 'react';
 import AppContext from '../../context';
 import SortOfferBarStyled from './SortOfferBarStyled';
 
+const ORDER_BY_OPTIONS = [
+  {
+    title: 'Order by:',
+    value: 'rank,asc'
+  },
+  {
+    title: 'Download Speed - Asc',
+    value: 'downloadSpeed,asc'
+  },
+  {
+    title: 'Download Speed - Desc',
+    value: 'downloadSpeed,desc'
+  },
+  {
+    title: 'Upload Speed - Asc',
+    value: 'uploadSpeed,asc'
+  },
+  {
+    title: 'Upload Speed - Desc',
+    value: 'uploadSpeed,desc'
+  },
+  {
+    title: 'Price - Asc',
+    value: 'price,asc'
+  },
+  {
+    title: 'Price - Desc',
+    value: 'price,desc'
+  }
+];
+
 const SortOfferBar = () => (
   <AppContext.Consumer>
     {context => (
@@ -10,21 +41,13 @@ const SortOfferBar = () => (
           {context.state.offers.totalResults} Results.
         </h2>
         <select onChange={context.handleChange}>
-          <option value='rank,asc'>Order by:</option>
-          <option value='downloadSpeed,asc'>
-            Download Speed - Asc
-          </option>
-          <option value='downloadSpeed,desc'>
-            Download Speed - Desc
-          </option>
-          <option value='uploadSpeed,asc'>
-            Upload Speed - Asc
-          </option>
-          <option value='uploadSpeed,desc'>
-            Upload Speed - Desc
-          </option>
-          <option value='price,asc'>Price - Asc</option>
-          <option value='price,desc'>Price - Desc</option>
+          {
+            ORDER_BY_OPTIONS.map(
+              ({title, value}) => (
+                <option value={value}>{title}</option>
+              )
+            )
+          }
         </select>
       </SortOfferBarStyled>
     )}
