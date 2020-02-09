@@ -4,8 +4,8 @@
 
 ## Dependencies:
 
-- Docker
-- Docker compose
+- Yarn
+- React
 
 ## Running Project
 
@@ -19,3 +19,4 @@ After this, go to browser and access: http://localhost:3000
 ## Tecnologies inside
 
 - ReactJS
+- Styled Components
