@@ -1,29 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { OfferItem } from '../OfferItem';
 import OfferListStyled from './OfferListStyles';
 import {SortOfferBar} from '../SortOfferBar';
 
 import AppContext from '../../context';
 
-const OfferList = () => (
-  <AppContext.Consumer>
-    {context => { 
-      const { sortedOffers } = context.state;
-      return (
-      <OfferListStyled>
-        <SortOfferBar />
-        {
-          sortedOffers &&
-          sortedOffers.map(
-            (offer, index) => (
-              <OfferItem key={index} offer={offer} />
-            )
-          )
-        }
-      </OfferListStyled>
-    )
-    }}
-  </AppContext.Consumer>
-);
+const OfferList = () => {
+  const {state} = useContext(AppContext);
+  return (
+    <OfferListStyled>
+      <SortOfferBar />
+      { state.sortedOffers &&
+        state.sortedOffers.map((offer, index) => (
+          <OfferItem key={index} offer={offer} />
+        ))}
+    </OfferListStyled>
+  );
+}
 
 export default OfferList;
