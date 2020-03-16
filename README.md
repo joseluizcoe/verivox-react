@@ -1,4 +1,4 @@
-# VerivoxTest by José Luiz Coe
+# Verivox by José Luiz Coe
 
 [This is my test to Verivox.](https://verivox-react-joseluizcoe.netlify.com/)
 
